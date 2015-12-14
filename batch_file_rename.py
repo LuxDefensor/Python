@@ -17,9 +17,9 @@ new_ext=sys.argv[3]											# Set the variable work_dir with the first argumen
 
 files = os.listdir(work_dir)									# Set the variable files, by listing everything in the directory 
 for filename in files:											# Loop through the files
-  file_ext = os.path.splitext(filename)[1]				# Get the file extension
+  file_left,file_ext = os.path.splitext(filename)				# Get the file extension and the left part of the file name
   if old_ext == file_ext:										# Start of the logic to check the file extensions, if old_ext = file_ext
-    newfile = filename.replace(old_ext, new_ext)	# Set newfile to be the filename, replaced with the new extension
+    newfile = file_left + file_ext	# Set newfile to be the filename, replaced with the new extension
     os.rename(													# Write the files
 	    os.path.join(work_dir, filename),
 		os.path.join(work_dir, newfile))
